@@ -12,7 +12,11 @@ setUsersList()
 
 btnDel.addEventListener('click', event => {
     event.preventDefault()
-    const id = document.querySelector('.users').value
+    const id = users.value
+    if (id === 'none') {
+        alert('Select user')
+        return
+    }
     const option = users.querySelector('option[value="'+id+'"]')
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
         method: 'DELETE',
